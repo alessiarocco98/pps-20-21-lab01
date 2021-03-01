@@ -3,7 +3,7 @@ import lab01.example.model.BankAccount;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AbstractSimpleBankAccountTest {
+public abstract class AbstractSimpleBankAccountTest {
     protected AccountHolder accountHolder;
     protected BankAccount bankAccount;
 

@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
  * The test suite for testing the SimpleBankAccount implementation
  */
 class SimpleBankAccountTest extends AbstractSimpleBankAccountTest {
+    private int initialAmount = 100;
+    private int expectedDepositAmount = 100;
+    private int expectedWithdrawtAmount = 30;
 
     @BeforeEach
     void beforeEach() {
@@ -19,22 +22,22 @@ class SimpleBankAccountTest extends AbstractSimpleBankAccountTest {
     }
     @Test
     void testDeposit(){
-        super.abstractTestDeposit(100, 100);
+        super.abstractTestDeposit(initialAmount, expectedDepositAmount);
     }
 
     @Test
     void testWrongDeposit(){
-        super.abstractTestWrongDeposit(100,100);
+        super.abstractTestWrongDeposit(initialAmount,expectedDepositAmount);
     }
 
     @Test
     void testWithdraw(){
-        super.abstractTestWithdraw(100, 30);
+        super.abstractTestWithdraw(initialAmount, expectedWithdrawtAmount);
     }
 
     @Test
     void testWrongWithdraw(){
-        super.abstractTestWrongWithdraw(100,100);
+        super.abstractTestWrongWithdraw(initialAmount,expectedDepositAmount);
     }
 
 }
