@@ -7,7 +7,7 @@ package lab01.example.model;
  */
 public class SimpleBankAccountWithAtm extends SimpleBankAccount{
 
-    private final int fee = 1;
+    private final int Fee = 1;
 
     public SimpleBankAccountWithAtm(final AccountHolder holder, final double balance) {
         super(holder, balance);
@@ -16,7 +16,7 @@ public class SimpleBankAccountWithAtm extends SimpleBankAccount{
     @Override
     public void deposit(int usrID, double amount) {
         if (checkUser(usrID)) {
-            this.balance += amount;
+            this.balance = this.balance - amount;
             payingFee();
         }
     }
@@ -24,13 +24,13 @@ public class SimpleBankAccountWithAtm extends SimpleBankAccount{
     @Override
     public void withdraw(int usrID, double amount) {
         if (checkUser(usrID) && isWithdrawAllowed(amount + 1)) {
-            this.balance -= amount;
+            this.balance = this.balance - amount;
             payingFee();
         }
     }
 
     private void payingFee() {
-        this.balance -= fee;
+        this.balance = this.balance - Fee;
     }
 
 }
