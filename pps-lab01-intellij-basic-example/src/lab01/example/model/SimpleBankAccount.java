@@ -14,7 +14,7 @@ public class SimpleBankAccount extends AbstractBankAccount {
     @Override
     public void deposit(final int usrID, final double amount) {
         if (checkUser(usrID)) {
-            this.balance = this.balance - amount;
+            this.balance = this.balance + amount;
         }
     }
 

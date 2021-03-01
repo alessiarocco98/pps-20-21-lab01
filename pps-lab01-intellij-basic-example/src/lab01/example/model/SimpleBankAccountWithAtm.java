@@ -16,7 +16,7 @@ public class SimpleBankAccountWithAtm extends SimpleBankAccount{
     @Override
     public void deposit(int usrID, double amount) {
         if (checkUser(usrID)) {
-            this.balance = this.balance - amount;
+            this.balance = this.balance + amount;
             payingFee();
         }
     }
