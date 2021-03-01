@@ -1,38 +1,40 @@
 import lab01.example.model.AccountHolder;
-import lab01.example.model.BankAccount;
 import lab01.example.model.SimpleBankAccount;
-
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * The test suite for testing the SimpleBankAccount implementation
  */
 class SimpleBankAccountTest extends AbstractSimpleBankAccountTest {
+
     @BeforeEach
     void beforeEach() {
         accountHolder = new AccountHolder("Mario", "Rossi", 1);
         bankAccount = new SimpleBankAccount(accountHolder, 0);
     }
-
+    @Test
+    void testInitialBalance() {
+        super.abstractTestInitialBalance();
+    }
     @Test
     void testDeposit(){
-        AbstractSimpleBankAccountTest.testDeposit(100, 100);
+        super.abstractTestDeposit(100, 100);
     }
 
     @Test
     void testWrongDeposit(){
-        AbstractSimpleBankAccountTest.testWrongDeposit(100, 100);
+        super.abstractTestWrongDeposit(100,100);
     }
 
     @Test
     void testWithdraw(){
-        AbstractSimpleBankAccountTest.testWithdraw(100, 30);
+        super.abstractTestWithdraw(100, 30);
     }
 
     @Test
     void testWrongWithdraw(){
-        AbstractSimpleBankAccountTest.testWrongWithdraw(100.0, 100.0);
+        super.abstractTestWrongWithdraw(100,100);
     }
 
 }
