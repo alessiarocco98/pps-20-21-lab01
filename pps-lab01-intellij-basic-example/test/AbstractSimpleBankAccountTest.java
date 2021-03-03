@@ -16,21 +16,21 @@ public abstract class AbstractSimpleBankAccountTest {
         assertEquals(expectedAmount, bankAccount.getBalance());
     }
 
-    void abstractTestWrongDeposit(double initialAmount, double expectedAmount) {
+    void abstractTestWrongDeposit(double initialAmount, double expectedAmount, int usrID, double depositAmount) {
         bankAccount.deposit(accountHolder.getId(), initialAmount);
-        bankAccount.deposit(2, 50);
+        bankAccount.deposit(usrID, depositAmount);
         assertEquals(expectedAmount, bankAccount.getBalance());
     }
 
-    void abstractTestWithdraw(double initialAmount, double expectedAmount) {
+    void abstractTestWithdraw(double initialAmount, double expectedAmount, double withdrawAmount) {
         bankAccount.deposit(accountHolder.getId(), initialAmount);
-        bankAccount.withdraw(accountHolder.getId(), 70);
+        bankAccount.withdraw(accountHolder.getId(), withdrawAmount);
         assertEquals(expectedAmount, bankAccount.getBalance());
     }
 
-    void abstractTestWrongWithdraw(double initialAmount, double expectedAmount) {
+    void abstractTestWrongWithdraw(double initialAmount, double expectedAmount, int usrID, double withdrawAmount) {
         bankAccount.deposit(accountHolder.getId(), initialAmount);
-        bankAccount.withdraw(2, 70);
+        bankAccount.withdraw(usrID, withdrawAmount);
         assertEquals(expectedAmount, bankAccount.getBalance());
     }
 }
