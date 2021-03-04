@@ -1,3 +1,4 @@
+import lab01.tdd.AbstractFactoryStrategy;
 import lab01.tdd.CircularList;
 import lab01.tdd.CircularListImpl;
 import org.junit.jupiter.api.Assertions;
@@ -82,18 +83,11 @@ public class CircularListTest {
     @Test
     void testNextWithStrategy() {
         creatingList();
-        //evenStrategy
-        assertEquals(Optional.of(expextedList.get(1)), circularList.next((element -> {
-            return element%2 == 0;
-        })));
-        //multipleOfStrategy (given number: 3)
-        assertEquals(Optional.of(expextedList.get(2)), circularList.next((element -> {
-            return element%3 == 0;
-        })));
-        //equalsStrategy (given number: 1)
-        assertEquals(Optional.of(expextedList.get(0)), circularList.next((element -> {
-            return element == 1;
-        })));
+        AbstractFactoryStrategy factoryStrategy = new AbstractFactoryStrategy();
+
+        assertEquals(Optional.of(expextedList.get(1)), circularList.next(factoryStrategy.createEvenStrategy()));
+        assertEquals(Optional.of(expextedList.get(2)), circularList.next(factoryStrategy.createMultipleOfStrategy(3)));
+        assertEquals(Optional.of(expextedList.get(0)), circularList.next(factoryStrategy.creatEequalsStrategy(1)));
     }
 
     @Disabled
