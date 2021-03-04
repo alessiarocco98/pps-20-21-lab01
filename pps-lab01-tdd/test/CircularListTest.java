@@ -5,7 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -74,6 +77,23 @@ public class CircularListTest {
         circularList.previous();
         circularList.reset();
         assertEquals(Optional.of(2), circularList.next());
+    }
+
+    @Test
+    void testNextWithStrategy() {
+        creatingList();
+        //evenStrategy
+        assertEquals(Optional.of(expextedList.get(1)), circularList.next((element -> {
+            return element%2 == 0;
+        })));
+        //multipleOfStrategy (given number: 3)
+        assertEquals(Optional.of(expextedList.get(2)), circularList.next((element -> {
+            return element%3 == 0;
+        })));
+        //equalsStrategy (given number: 1)
+        assertEquals(Optional.of(expextedList.get(0)), circularList.next((element -> {
+            return element == 1;
+        })));
     }
 
     @Disabled
